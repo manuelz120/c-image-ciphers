@@ -76,7 +76,7 @@ int main(int argc, char* argv[]) {
     }
 
     // use same key for tests, TODO prod use key from command line
-    unsigned char *key = "1234578901234567890123456789012";
+    unsigned char *key = "11234578901234567890123456789012";
 
     unsigned char iv[] = {
         34, 45, 56, 78, 90, 12, 34, 23, 56, 78, 9, 3, 5, 23, 87,
@@ -131,7 +131,7 @@ int main(int argc, char* argv[]) {
 
         clock_t begin_algo = clock();
 
-        PTF("---- using parameters: X= %0.15f, C= %d \n", params.X, params.C);
+        printf("---- using parameters: X= %0.15f, C= %d \n", params.X, params.C);
         if(mode == DEC_MODE) {
             decrypt(&params, buffer, bufferPos, key, iv);
         }

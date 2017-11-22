@@ -28,8 +28,8 @@
     #define PTF_IMPT(A,...) ;
 #endif
 
-static int ENC_MODE = 1;
-static int DEC_MODE = 2;
+#define ENC_MODE 1
+#define DEC_MODE 2
 
 typedef struct AlgorithmParameters {
     double X;

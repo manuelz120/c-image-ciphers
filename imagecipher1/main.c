@@ -3,7 +3,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
-#include <gmp.h>
 #include "imagecipher1.h"
 
 #define MAX_FILE_PATH_LENGTH 512

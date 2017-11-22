@@ -17,7 +17,7 @@ unsigned char convertM2(double x) {
     return ((int)x) % 256;
 
     //return ((int)x) % 256;
-    static double minLogistic = 0.0;
+    /*static double minLogistic = 0.0;
     static double maxLogistic = 1.0;
     static double rangeLogistic = 1.0 - 0.0;
 
@@ -30,16 +30,16 @@ unsigned char convertM2(double x) {
 
     return (unsigned char)((((x - minLogistic) * rangeImage) / rangeLogistic) + minImage);
 
-    //return (unsigned char)(((int)((((x - minLogistic) * rangeImage) / rangeLogistic) + minImage)) % 256);
+    //return (unsigned char)(((int)((((x - minLogistic) * rangeImage) / rangeLogistic) + minImage)) % 256);*/
 }
 
 // convert a value from image bytes (as double because calculations could have happenend before) to logistic map range 0-1
 double convertM1(double x) {
-    static double DIVISOR_M1 = 1000.0;
+    static double DIVISOR_M1 = 256.0;
 
-    return x / DIVISOR_M1;
+    return convertM2(x) / DIVISOR_M1;
 
-    static double minLogistic = 0.0;
+    /*static double minLogistic = 0.0;
     static double maxLogistic = 1.0;
     static double rangeLogistic = 1.0 - 0.0;
 
@@ -49,7 +49,7 @@ double convertM1(double x) {
 
     x = ((int)x) % 256;
 
-    return (double)((((x - minImage) * rangeLogistic) / rangeImage) + minLogistic);
+    return (double)((((x - minImage) * rangeLogistic) / rangeImage) + minLogistic);*/
 }
 
 AlgorithmParameter generateInitialContitions(unsigned char key[KEY_SIZE]) {
@@ -60,15 +60,12 @@ AlgorithmParameter generateInitialContitions(unsigned char key[KEY_SIZE]) {
 
     for(int i = 0; i < KEY_SIZE; i++) {
         r += convertM1((double)key[i]);
-        param.C = (param.C + key[i]) % 256;
+        param.C += key[i];
     }
 
+    param.C %= 256;
     param.X = r - floor(r);
     double xn = param.X;
-
-    // skip first 1000 Logistic Map repititions
-    //for(int i = 0; i < 1000; i++)
-    //    xn = LOGISTIC_R * xn * (1.0 - xn);
 
     param.X = xn;
 
@@ -106,16 +103,16 @@ void encrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOf
 
         PTF("logisticSum = %.15f\n", logisticSum);
 
-        PTF("IV bytes %u XOR %u = ", imageBytes[l], iv[l]);
+        /*PTF("IV bytes %u XOR %u = ", imageBytes[l], iv[l]);
         // apply CBC before encryption
         imageBytes[l] = iv[l]^imageBytes[l];
-        PTF("%u\n", imageBytes[l]);
+        PTF("%u\n", imageBytes[l]);*/
 
         imageBytes[l] = (((int)imageBytes[l]) + convertM2(logisticSum)) % 256;
         lastC = imageBytes[l];
 
         // set iv for next encryption round
-        iv[l] = lastC;
+        // iv[l] = lastC;
     }
 
     params->X = x;
@@ -159,12 +156,12 @@ void decrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOf
         imageBytes[l] = (((int)imageBytes[l]) - convertM2(logisticSum)) % 256;
 
         // apply reverse cbc for decryption
-        PTF("IV bytes %u XOR %u = ", imageBytes[l], iv[l]);
-        imageBytes[l] = iv[l]^imageBytes[l];
-        PTF("%u\n", imageBytes[l]);
+        // PTF("IV bytes %u XOR %u = ", imageBytes[l], iv[l]);
+        // imageBytes[l] = iv[l]^imageBytes[l];
+        // PTF("%u\n", imageBytes[l]);
 
         // set iv for next decryption round
-        iv[l] = lastC;
+        // iv[l] = lastC;
     }
 
     params->X = x;
