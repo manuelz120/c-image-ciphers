@@ -61,3 +61,5 @@ imagecipher1/cmake-build-debug/
 imagecipher1/\.idea/
 
 imagecipher1/main
+
+ECBFSC-nongmp/main
