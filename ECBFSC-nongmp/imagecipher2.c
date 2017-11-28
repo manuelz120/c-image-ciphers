@@ -103,16 +103,16 @@ void encrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOf
 
         PTF("logisticSum = %.15f\n", logisticSum);
 
-        /*PTF("IV bytes %u XOR %u = ", imageBytes[l], iv[l]);
+        PTF("IV bytes %u XOR %u = ", imageBytes[l], iv[l]);
         // apply CBC before encryption
         imageBytes[l] = iv[l]^imageBytes[l];
-        PTF("%u\n", imageBytes[l]);*/
+        PTF("%u\n", imageBytes[l]);
 
         imageBytes[l] = (((int)imageBytes[l]) + convertM2(logisticSum)) % 256;
         lastC = imageBytes[l];
 
         // set iv for next encryption round
-        // iv[l] = lastC;
+        iv[l] = lastC;
     }
 
     params->X = x;
@@ -156,12 +156,12 @@ void decrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOf
         imageBytes[l] = (((int)imageBytes[l]) - convertM2(logisticSum)) % 256;
 
         // apply reverse cbc for decryption
-        // PTF("IV bytes %u XOR %u = ", imageBytes[l], iv[l]);
-        // imageBytes[l] = iv[l]^imageBytes[l];
-        // PTF("%u\n", imageBytes[l]);
+        PTF("IV bytes %u XOR %u = ", imageBytes[l], iv[l]);
+        imageBytes[l] = iv[l]^imageBytes[l];
+        PTF("%u\n", imageBytes[l]);
 
         // set iv for next decryption round
-        // iv[l] = lastC;
+        iv[l] = lastC;
     }
 
     params->X = x;

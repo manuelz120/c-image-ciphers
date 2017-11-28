@@ -4,7 +4,6 @@ import sys
 filename = str(sys.argv[1])
 image = Image.open(filename)
 pix = image.load()
-
 x = 0
 y = 0
 

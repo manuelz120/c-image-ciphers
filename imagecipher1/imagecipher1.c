@@ -164,7 +164,7 @@ void runAlgorithm(int mode, unsigned char *imageBytes, long numberOfImageBytes, 
     s = clockStart("start diffusion");
 
     // 3. generate control parameters for ikeda map based on image
-    PTF("\n-------------Diffustion Parameters\n");
+    PTF("\n-------------Diffussion Parameters\n");
     for(int i = 0; i < 2; i++) {
         diffuSetups[i].miu = generateControlParametersIkedaMap(diffuSetups[i].miu, avg, numberOfImageBytes);
         PTF("miu%d = %.15f\n", i, diffuSetups[i].miu);
@@ -204,9 +204,9 @@ void runAlgorithm(int mode, unsigned char *imageBytes, long numberOfImageBytes, 
         long k, j;
         for(int i = 0; i < encryptionRounds; i++) {
 
-            for(k = 0; k < 4; k++) {
+            for(k = 0; k < 4; k++) {              
                 PTF("\n----------- round %d after permutation %ld [", i, k);
-                for(j = 0; j < numberOfImageBytes; j++) {
+                for(j = 0; j < numberOfImageBytes; j++) {                
                     tmpImageBytes[j] = imageBytes[permutationSequenceLogisticMap[k][j]]^diffustionSequenceIkedaMap[k][j];
                     PTF("%u, ", tmpImageBytes[j]);
                 }
@@ -399,15 +399,18 @@ void createPermutationSequence(int permutationSequence[], double r, double x, lo
         tmpResult1 = (((int)floor(tmpTimes)) % 10);
         tmpResult2 = (((int)floor(tmpTimes * 1000)) % 10);
 
+
+        // TODO strange check and insert ABS
         if(tmpResult1 >= tmpResult2)
             groupNumber = tmpResult1-tmpResult2;
         else if(tmpResult2 >= tmpResult1)
             groupNumber = tmpResult2-tmpResult1;
 
+        // TODO throw error instead of failing silently
         if(groupNumber < 0 || groupNumber > 9)
             return;
 
-        // set value into appropriate group array
+        // set value into appropriate group array => postfix increment should be correct here
         groupedArrays[groupNumber][lastGroupedArrayPosition[groupNumber]++] = sequenceS[i];
     }
 
@@ -420,6 +423,7 @@ void createPermutationSequence(int permutationSequence[], double r, double x, lo
             break;
 
         j = 0;
+        // TODO shouldn't it be >= here????
         while(groupedArrays[i][j] > 0) {
             permutationSequence[permutationIndex++] = find(sequenceS, groupedArrays[i][j], sequenceLength);
             j++;

@@ -175,6 +175,10 @@ int main(int argc, char* argv[]) {
     if(mode == ENC_MODE) {
         sumOfAllImageBytes = 0;
         for(int i = 0; i < numberOfImageBytes; i++) {
+            if (sumOfAllImageBytes + imageBytes[i] < sumOfAllImageBytes) {
+                printf("Overflow!\n");
+                exit(0);
+            }
             sumOfAllImageBytes += imageBytes[i];
         }
     }

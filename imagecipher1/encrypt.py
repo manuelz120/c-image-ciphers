@@ -17,6 +17,7 @@ encryptedImageFile = encryptedBytesFile + '.png'
 outputFileName = filename + '.encrypted.png'
 
 os.system('python imageToBytes.py ' + sys.argv[1] + ' ' + sys.argv[2])
+#os.system('valgrind --tool=massif ./main ' + bytesFile + ' 1 ' + width + ' ' + height + ' ' + str(len(sys.argv[2])))
 os.system('./main ' + bytesFile + ' 1 ' + width + ' ' + height + ' ' + str(len(sys.argv[2])))
 print('./main ' + bytesFile + ' 1 ' + width + ' ' + height + ' ' + str(len(sys.argv[2])))
 os.system('python bytesToImage.py ' + encryptedBytesFile + ' ' + width + ' ' + height)
