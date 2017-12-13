@@ -37,8 +37,8 @@ typedef struct AlgorithmParameters {
 } AlgorithmParameter;
 
 AlgorithmParameter generateInitialContitions(unsigned char *key);
-void encrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOfImageBytes, unsigned char *key, unsigned char *iv);
-void decrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOfImageBytes, unsigned char *key, unsigned char *iv);
+void encrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOfImageBytes, unsigned char *key);
+void decrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOfImageBytes, unsigned char *key);
 
 // only in header file for testing
 // convert a value from the logistic map to the range of an image byte = 0-255

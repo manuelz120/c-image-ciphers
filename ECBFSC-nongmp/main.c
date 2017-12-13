@@ -76,12 +76,7 @@ int main(int argc, char* argv[]) {
     }
 
     // use same key for tests, TODO prod use key from command line
-    unsigned char *key = "11234578901234567890123456789012";
-
-    unsigned char iv[] = {
-        34, 45, 56, 78, 90, 12, 34, 23, 56, 78, 9, 3, 5, 23, 87,
-        3, 4, 5, 1, 9, 8, 34, 89, 34, 22, 93, 75, 76, 23, 16, 39, 53
-    };
+    unsigned char *key = "manuelmanuelmanuelmanuelmanuelma";
 
     PTF_IMPT("using Key: ");
     for(int i = 0; i < KEY_SIZE; i++)
@@ -133,10 +128,10 @@ int main(int argc, char* argv[]) {
 
         printf("---- using parameters: X= %0.15f, C= %d \n", params.X, params.C);
         if(mode == DEC_MODE) {
-            decrypt(&params, buffer, bufferPos, key, iv);
+            decrypt(&params, buffer, bufferPos, key);
         }
         else if(mode == ENC_MODE){
-            encrypt(&params, buffer, bufferPos, key, iv);
+            encrypt(&params, buffer, bufferPos, key);
         }
 
         /*PTF("---- result Block %d: \n[", block, i);
