@@ -10,28 +10,29 @@
 
 // use floating point standard for precision
 #ifndef __STDC_IEC_559__
-    #define __STDC_IEC_559__ 1
+#define __STDC_IEC_559__ 1
 #endif
 
 #define BUFFER_SIZE 32
 #define KEY_SIZE 32 // as unsigned char array = 256 bit
 
 #ifdef DEV
-    #define PTF(A,...) printf(A,##__VA_ARGS__);
+#define PTF(A, ...) printf(A, ##__VA_ARGS__);
 #else
-    #define PTF(A,...) ;
+#define PTF(A, ...) ;
 #endif
 
 #ifdef TEST
-    #define PTF_IMPT(A,...) printf(A,##__VA_ARGS__);
+#define PTF_IMPT(A, ...) printf(A, ##__VA_ARGS__);
 #else
-    #define PTF_IMPT(A,...) ;
+#define PTF_IMPT(A, ...) ;
 #endif
 
 #define ENC_MODE 1
 #define DEC_MODE 2
 
-typedef struct AlgorithmParameters {
+typedef struct AlgorithmParameters
+{
     double X;
     unsigned char C;
 } AlgorithmParameter;
@@ -39,9 +40,3 @@ typedef struct AlgorithmParameters {
 AlgorithmParameter generateInitialContitions(unsigned char *key);
 void encrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOfImageBytes, unsigned char *key);
 void decrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOfImageBytes, unsigned char *key);
-
-// only in header file for testing
-// convert a value from the logistic map to the range of an image byte = 0-255
-unsigned char convertM2(double x);
-// convert a value from image bytes (as double because calculations could have happenend before) to logistic map range 0-1
-double convertM1(double x);

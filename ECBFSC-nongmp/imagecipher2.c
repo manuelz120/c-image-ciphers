@@ -7,29 +7,29 @@
 // constant for running logistic map
 static double LOGISTIC_R = 3.712345;
 
-// used to cut of incorrect precision values on double values
-// used (int)(value/PRECISION) / PRECISION
-static double PRECISION = 1000000000000.0;
-
 // convert a value from the logistic map to the range of an image byte = 0-255
-unsigned char convertM2(double x) {
-    return ((char)round(x)) * 255;
+unsigned char M2(double x)
+{
+    return (unsigned char)round(x * 255);
 }
 
 // convert a value from image bytes (as double because calculations could have happenend before) to logistic map range 0-1
-double convertM1(double x) {
+double M1(double x)
+{
     static double DIVISOR_M1 = 256.0;
     return x / DIVISOR_M1;
 }
 
-AlgorithmParameter generateInitialContitions(unsigned char key[KEY_SIZE]) {
+AlgorithmParameter generateInitialContitions(unsigned char key[KEY_SIZE])
+{
     AlgorithmParameter param;
 
     double r = 0;
     param.C = 0;
 
-    for(int i = 0; i < KEY_SIZE; i++) {
-        r += convertM1((double)key[i]);
+    for (int i = 0; i < KEY_SIZE; i++)
+    {
+        r += M1((double)key[i]);
         param.C += key[i];
     }
 
@@ -39,56 +39,55 @@ AlgorithmParameter generateInitialContitions(unsigned char key[KEY_SIZE]) {
     return param;
 }
 
-void encrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOfImageBytes, unsigned char key[KEY_SIZE]) {
-
-    if(numberOfImageBytes > BUFFER_SIZE)
-        exit(1);
-
+void encrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOfImageBytes, unsigned char key[KEY_SIZE])
+{
     double lastXi = params->X;
     unsigned char lastEncryptedByte = params->C;
 
-    for(int l = 0; l < numberOfImageBytes; l++) {
+    for (int i = 0; i < numberOfImageBytes; i++)
+    {
         // start at key pos 0 again after reaching end of key
-        char nextKeyPos = (l+1) % KEY_SIZE;
-        int numberOfLogisticMapRepititions = ((int)key[nextKeyPos]) + lastEncryptedByte;
+        int nextKeyPos = (i + 1) % KEY_SIZE;
+        int numberOfLogisticMapRepititions = key[nextKeyPos] + lastEncryptedByte;
 
-        double xi = convertM1(lastXi + lastEncryptedByte + key[l % KEY_SIZE]);
+        double xi = M1(lastXi + lastEncryptedByte + key[i % KEY_SIZE]);
         double logisticSum = 0.0;
 
-        for(int i = 0; i < numberOfLogisticMapRepititions; i++) {
+        for (int j = 0; j < numberOfLogisticMapRepititions; j++)
+        {
             logisticSum += LOGISTIC_R * xi * (1.0 - xi);
         }
 
-        imageBytes[l] = (char)((imageBytes[l] + convertM2(logisticSum)) % 256);
-        lastEncryptedByte = imageBytes[l];
+        imageBytes[i] = (unsigned char)((imageBytes[i] + M2(logisticSum)) % 256);
+        lastEncryptedByte = imageBytes[i];
         lastXi = xi;
     }
 }
 
 // same as encryption, except convertedBytes = origBytes - convertM2(logisticSum)
 // copied, to avoid if in every iteration = better performance
-void decrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOfImageBytes, unsigned char key[KEY_SIZE]) {
-
-    if(numberOfImageBytes > BUFFER_SIZE)
-        exit(1);
+void decrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOfImageBytes, unsigned char key[KEY_SIZE])
+{
 
     double lastXi = params->X;
     unsigned char lastEncryptedByte = params->C;
 
-    for(int l = 0; l < numberOfImageBytes; l++) {
+    for (int l = 0; l < numberOfImageBytes; l++)
+    {
         // start at key pos 0 again after reaching end of key
-        char nextKeyPos = (l+1) % KEY_SIZE;
+        char nextKeyPos = (l + 1) % KEY_SIZE;
         int numberOfLogisticMapRepititions = ((int)key[nextKeyPos]) + lastEncryptedByte;
 
-        double xi = convertM1(lastXi + lastEncryptedByte + key[l % KEY_SIZE]);
+        double xi = M1(lastXi + lastEncryptedByte + key[l % KEY_SIZE]);
         double logisticSum = 0.0;
 
-        for(int i = 0; i < numberOfLogisticMapRepititions; i++) {
-            logisticSum -= LOGISTIC_R * xi * (1.0 - xi);
+        for (int i = 0; i < numberOfLogisticMapRepititions; i++)
+        {
+            logisticSum += LOGISTIC_R * xi * (1.0 - xi);
         }
 
         lastEncryptedByte = imageBytes[l];
-        imageBytes[l] = (char)((imageBytes[l] + convertM2(logisticSum)) % 256);
+        imageBytes[l] = (char)((imageBytes[l] - M2(logisticSum)) % 256);
         lastXi = xi;
     }
 }
