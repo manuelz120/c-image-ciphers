@@ -16,7 +16,7 @@ unsigned char M2(double x)
 // convert a value from image bytes (as double because calculations could have happenend before) to logistic map range 0-1
 double M1(double x)
 {
-    static double DIVISOR_M1 = 256.0;
+    static double DIVISOR_M1 = 255.0;
     return x / DIVISOR_M1;
 }
 
@@ -58,9 +58,9 @@ void encrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOf
             logisticSum += LOGISTIC_R * xi * (1.0 - xi);
         }
 
-        imageBytes[i] = (unsigned char)((imageBytes[i] + M2(logisticSum)) % 256);
+        lastXi = M2(logisticSum);
+        imageBytes[i] = (unsigned char)((int)(imageBytes[i] + lastXi) % 256);
         lastEncryptedByte = imageBytes[i];
-        lastXi = xi;
     }
 }
 
@@ -86,8 +86,8 @@ void decrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOf
             logisticSum += LOGISTIC_R * xi * (1.0 - xi);
         }
 
+        lastXi = M2(logisticSum);
         lastEncryptedByte = imageBytes[l];
-        imageBytes[l] = (char)((imageBytes[l] - M2(logisticSum)) % 256);
-        lastXi = xi;
+        imageBytes[l] = (char)((int)(imageBytes[l] - lastXi) % 256);
     }
 }
