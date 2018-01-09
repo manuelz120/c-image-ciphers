@@ -25,33 +25,57 @@ int find(double array[], double data, long length);
 //    quickSort(&myArray[3],5); // sorts elements 3, 4, 5, 6, and 7
 //    http://alienryderflex.com/quicksort/
 
-int quickSort(double *arr, int elements) {
+int quickSort(double *arr, int elements)
+{
 
-  #define  MAX_LEVELS  1000
+#define MAX_LEVELS 1000
 
-  double piv;
-  int  beg[MAX_LEVELS], end[MAX_LEVELS], L, R, i = 0 ;
+    double piv;
+    int beg[MAX_LEVELS], end[MAX_LEVELS], L, R, i = 0;
 
-  beg[0]=0; end[0]=elements;
-  while (i>=0) {
-    L=beg[i]; R=end[i]-1;
-    if (L<R) {
-      piv=arr[L]; if (i==MAX_LEVELS-1) return -1;
-      while (L<R) {
-        while (arr[R]>=piv && L<R) R--; if (L<R) arr[L++]=arr[R];
-        while (arr[L]<=piv && L<R) L++; if (L<R) arr[R--]=arr[L]; }
-      arr[L]=piv; beg[i+1]=L+1; end[i+1]=end[i]; end[i++]=L; }
-    else {
-      i--; }}
-  return 0;
+    beg[0] = 0;
+    end[0] = elements;
+    while (i >= 0)
+    {
+        L = beg[i];
+        R = end[i] - 1;
+        if (L < R)
+        {
+            piv = arr[L];
+            if (i == MAX_LEVELS - 1)
+                return -1;
+            while (L < R)
+            {
+                while (arr[R] >= piv && L < R)
+                    R--;
+                if (L < R)
+                    arr[L++] = arr[R];
+                while (arr[L] <= piv && L < R)
+                    L++;
+                if (L < R)
+                    arr[R--] = arr[L];
+            }
+            arr[L] = piv;
+            beg[i + 1] = L + 1;
+            end[i + 1] = end[i];
+            end[i++] = L;
+        }
+        else
+        {
+            i--;
+        }
+    }
+    return 0;
 }
 
-clock_t clockStart(char *message) {
+clock_t clockStart(char *message)
+{
     PTF_IMPT("\nstarting %s \n", message);
     return clock();
 }
 
-void clockStopAndWrite(char *message, clock_t begin) {
+void clockStopAndWrite(char *message, clock_t begin)
+{
     clock_t end = clock();
     double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 
@@ -70,61 +94,65 @@ void createDiffusionSequenceIkedaMap(double miu, double x, double y, unsigned ch
 // generate diffustion parameters based on image values
 double generateControlParametersIkedaMap(double miu, double avgOfImageByteSum, long numberOfImageBytes);
 
-void runAlgorithm(int mode, unsigned char *imageBytes, long numberOfImageBytes, long sumOfAllImageBytes, PermutationSetup permutationSetups[4], DiffusionSetup diffusionSetups[2], int encryptionRounds) {
+void runAlgorithm(int mode, unsigned char *imageBytes, long numberOfImageBytes, long sumOfAllImageBytes, PermutationSetup permutationSetups[4], DiffusionSetup diffusionSetups[2], int encryptionRounds)
+{
 
     // copy setups so they are not changed
     PermutationSetup permSetups[4];
     DiffusionSetup diffuSetups[2];
 
-    for(int i = 0; i < 4; i ++) {
+    for (int i = 0; i < 4; i++)
+    {
         permSetups[i].r = permutationSetups[i].r;
         permSetups[i].x = permutationSetups[i].x;
     }
-    for(int i = 0; i < 2; i ++) {
+    for (int i = 0; i < 2; i++)
+    {
         diffuSetups[i].miu = diffusionSetups[i].miu;
         diffuSetups[i].x = diffusionSetups[i].x;
         diffuSetups[i].y = diffusionSetups[i].y;
     }
 
-    #ifdef DEV
+#ifdef DEV
     char *modeDesc = "encryption";
-    if(mode == DEC_MODE)
+    if (mode == DEC_MODE)
         modeDesc = "decryption";
 
     PTF_IMPT("\n--- running %s mode ---\n", modeDesc);
 
     PTF_IMPT("\n----------- input Image [");
-    for(long j = 0; j < numberOfImageBytes; j++) {
+    for (long j = 0; j < numberOfImageBytes; j++)
+    {
         PTF_IMPT("%u, ", imageBytes[j]);
     }
     PTF_IMPT("] -------------------\n");
 
     PTF_IMPT("Permutation setups: \n");
-    for(int i = 0; i < 4; i ++) {
+    for (int i = 0; i < 4; i++)
+    {
         PTF_IMPT("%d setup\n   r = %0.20f\n   x = %0.20f\n", i, permSetups[i].r, permSetups[i].x);
     }
     PTF_IMPT("-------------------\n");
 
     PTF_IMPT("Diffusion setups: \n");
-    for(int i = 0; i < 2; i ++) {
+    for (int i = 0; i < 2; i++)
+    {
         PTF_IMPT("%d setup\n   miu = %0.20f\n   x = %0.20f\n   y = %0.20f\n", i, diffuSetups[i].miu, diffuSetups[i].x, diffuSetups[i].y);
     }
     PTF_IMPT("-------------------\n");
 
     PTF_IMPT("Image size (number of bytes) = %ld\n", numberOfImageBytes);
-    #endif
-
-    /*int permutationSequenceLogisticMap[4][numberOfImageBytes];
-    unsigned char diffustionSequenceIkedaMap[4][numberOfImageBytes];*/
+#endif
 
     clock_t s = clockStart("start permutation");
 
-    int **permutationSequenceLogisticMap = (int**)malloc(sizeof(int*)*4);
-    unsigned char **diffustionSequenceIkedaMap = (unsigned char**)malloc(sizeof(unsigned char*)*4);
+    int **permutationSequenceLogisticMap = (int **)malloc(sizeof(int *) * 4);
+    unsigned char **diffustionSequenceIkedaMap = (unsigned char **)malloc(sizeof(unsigned char *) * 4);
 
-    for(int i = 0; i < 4; i++){
-        permutationSequenceLogisticMap[i] = (int*)malloc(sizeof(int)*numberOfImageBytes);
-        diffustionSequenceIkedaMap[i] = (unsigned char *)malloc(sizeof(unsigned char)*numberOfImageBytes);
+    for (int i = 0; i < 4; i++)
+    {
+        permutationSequenceLogisticMap[i] = (int *)malloc(sizeof(int) * numberOfImageBytes);
+        diffustionSequenceIkedaMap[i] = (unsigned char *)malloc(sizeof(unsigned char) * numberOfImageBytes);
     }
 
     double avg = 0;
@@ -135,7 +163,8 @@ void runAlgorithm(int mode, unsigned char *imageBytes, long numberOfImageBytes, 
 
     // 1. generate control parameters for logistic map based on image
     PTF("\n-------------Permutation Parameters\n");
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++)
+    {
         permSetups[i].r = generateControlParametersLogisticMap(permSetups[i].r, avg, numberOfImageBytes);
         PTF("r%d = %.15f\n", i, permSetups[i].r);
     }
@@ -145,16 +174,18 @@ void runAlgorithm(int mode, unsigned char *imageBytes, long numberOfImageBytes, 
 
     // 2. create permutation = fill permutation array
     PTF("\n-------------Permutation Sequences \n");
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++)
+    {
         createPermutationSequence(permutationSequenceLogisticMap[i], permSetups[i].r, permSetups[i].x, numberOfImageBytes);
 
-        #ifdef DEV
+#ifdef DEV
         PTF("\nPermutation Sequence %d: \n [", i);
-        for(int j = 0; j < 18; j++) {
+        for (int j = 0; j < 18; j++)
+        {
             PTF("%d ", permutationSequenceLogisticMap[i][j]);
         }
         PTF(" ]-------------------\n");
-        #endif
+#endif
     }
 
     clockStopAndWrite("   done permSeq", s2);
@@ -165,60 +196,57 @@ void runAlgorithm(int mode, unsigned char *imageBytes, long numberOfImageBytes, 
 
     // 3. generate control parameters for ikeda map based on image
     PTF("\n-------------Diffussion Parameters\n");
-    for(int i = 0; i < 2; i++) {
+    for (int i = 0; i < 2; i++)
+    {
         diffuSetups[i].miu = generateControlParametersIkedaMap(diffuSetups[i].miu, avg, numberOfImageBytes);
         PTF("miu%d = %.15f\n", i, diffuSetups[i].miu);
     }
     PTF("-------------\n");
 
-
     // 4. create ikeda map diffusion sequence
     PTF("\n-------------Diffustion Sequences \n");
-    for(int i = 0; i < 2; i++) {
-        createDiffusionSequenceIkedaMap(diffuSetups[i].miu, diffuSetups[i].x, diffuSetups[i].y, diffustionSequenceIkedaMap[i*2], diffustionSequenceIkedaMap[(i*2)+1], numberOfImageBytes);
+    for (int i = 0; i < 2; i++)
+    {
+        createDiffusionSequenceIkedaMap(diffuSetups[i].miu, diffuSetups[i].x, diffuSetups[i].y, diffustionSequenceIkedaMap[i * 2], diffustionSequenceIkedaMap[(i * 2) + 1], numberOfImageBytes);
 
-        #ifdef DEV
-        PTF("\nDiffusion Sequence %d: \n [ ", i*2);
-        for(int j = 0; j < 18; j++) {
-            PTF("%d ", diffustionSequenceIkedaMap[i*2][j]);
+#ifdef DEV
+        PTF("\nDiffusion Sequence %d: \n [ ", i * 2);
+        for (int j = 0; j < 18; j++)
+        {
+            PTF("%d ", diffustionSequenceIkedaMap[i * 2][j]);
         }
         PTF(" ]-------------------\n");
 
-        PTF("\nDiffusion Sequence %d: \n [ ", (i*2)+1);
-        for(int j = 0; j < 18; j++) {
-            PTF("%d ", diffustionSequenceIkedaMap[(i*2)+1][j]);
+        PTF("\nDiffusion Sequence %d: \n [ ", (i * 2) + 1);
+        for (int j = 0; j < 18; j++)
+        {
+            PTF("%d ", diffustionSequenceIkedaMap[(i * 2) + 1][j]);
         }
         PTF(" ]-------------------\n");
-        #endif
+#endif
     }
 
     clockStopAndWrite("done diffusion", s);
 
     s = clockStart("encryption/decryption");
 
-    if(mode == ENC_MODE) {
+    if (mode == ENC_MODE)
+    {
         // 5. Encryption rounds
-        unsigned char *tmpImageBytes = (unsigned char*)malloc(sizeof(unsigned char)*numberOfImageBytes);
-        //memcpy(tmpImageBytes, imageBytes, numberOfImageBytes * sizeof(unsigned char));
+        unsigned char *tmpImageBytes = (unsigned char *)malloc(sizeof(unsigned char) * numberOfImageBytes);
 
         long k, j;
-        for(int i = 0; i < encryptionRounds; i++) {
-
-            for(k = 0; k < 4; k++) {              
-                PTF("\n----------- round %d after permutation %ld [", i, k);
-                for(j = 0; j < numberOfImageBytes; j++) {                
-                    tmpImageBytes[j] = imageBytes[permutationSequenceLogisticMap[k][j]]^diffustionSequenceIkedaMap[k][j];
-                    PTF("%u, ", tmpImageBytes[j]);
+        for (int i = 0; i < encryptionRounds; i++)
+        {
+            for (k = 0; k < 4; k++)
+            {
+                //PTF("\n----------- round %d after permutation %ld [", i, k);
+                for (j = 0; j < numberOfImageBytes; j++)
+                {
+                    tmpImageBytes[j] = imageBytes[permutationSequenceLogisticMap[k][j]] ^ diffustionSequenceIkedaMap[k][j];
+                    //PTF("%u, ", imageBytes[j]);
                 }
-                PTF("] \n");
-
-/*
-                PTF("\n----------- round %d after diffustion %d [", i, k);
-                for(j = 0; j < numberOfImageBytes; j++) {
-                    imageBytes[j] = tmpImageBytes[j]^diffustionSequenceIkedaMap[k][j];
-                    PTF("%u, ", imageBytes[j]);
-                }
-                PTF("] \n");*/
+                //PTF("] \n");
 
                 memcpy(imageBytes, tmpImageBytes, numberOfImageBytes * sizeof(unsigned char));
             }
@@ -226,32 +254,24 @@ void runAlgorithm(int mode, unsigned char *imageBytes, long numberOfImageBytes, 
 
         free(tmpImageBytes);
     }
-    else if(mode == DEC_MODE) {
+    else if (mode == DEC_MODE)
+    {
         // 5. decryption rounds
-        unsigned char *tmpImageBytes = (unsigned char*)malloc(sizeof(unsigned char)*numberOfImageBytes);
-        //memcpy(tmpImageBytes, imageBytes, numberOfImageBytes * sizeof(unsigned char));
+        unsigned char *tmpImageBytes = (unsigned char *)malloc(sizeof(unsigned char) * numberOfImageBytes);
 
         long k, j;
-        for(int i = 0; i < encryptionRounds; i++) {
+        for (int i = 0; i < encryptionRounds; i++)
+        {
 
-            for(k = 3; k >= 0; k--) {
-
-                PTF("\n----------- round %d after diffustion %ld [", i, k);
-                for(j = 0; j < numberOfImageBytes; j++) {
-                    tmpImageBytes[/*j*/permutationSequenceLogisticMap[k][j]] = imageBytes[j]^diffustionSequenceIkedaMap[k][j];
-                    PTF("%u, ", tmpImageBytes[j]);
+            for (k = 3; k >= 0; k--)
+            {
+                //PTF("\n----------- round %d after diffustion %ld [", i, k);
+                for (j = 0; j < numberOfImageBytes; j++)
+                {
+                    tmpImageBytes[/*j*/ permutationSequenceLogisticMap[k][j]] = imageBytes[j] ^ diffustionSequenceIkedaMap[k][j];
+                    //PTF("%u, ", tmpImageBytes[j]);
                 }
-                PTF("] \n");
-/*
-                PTF("\n----------- round %d after permutatio %d [", i, k);
-                for(j = 0; j < numberOfImageBytes; j++) {
-                    imageBytes[permutationSequenceLogisticMap[k][j]] = tmpImageBytes[j];
-                }
-                for(j = 0; j < numberOfImageBytes; j++) {
-                    PTF("%u, ", imageBytes[j]);
-                }
-                PTF("] \n");
-               */
+                //PTF("] \n");
 
                 memcpy(imageBytes, tmpImageBytes, numberOfImageBytes * sizeof(unsigned char));
             }
@@ -262,7 +282,8 @@ void runAlgorithm(int mode, unsigned char *imageBytes, long numberOfImageBytes, 
 
     clockStopAndWrite("done enc/dec", s);
 
-    for(int i = 0; i < 4; i++){
+    for (int i = 0; i < 4; i++)
+    {
         free(permutationSequenceLogisticMap[i]);
         free(diffustionSequenceIkedaMap[i]);
     }
@@ -270,16 +291,18 @@ void runAlgorithm(int mode, unsigned char *imageBytes, long numberOfImageBytes, 
     free(permutationSequenceLogisticMap);
     free(diffustionSequenceIkedaMap);
 
-    #ifdef DEV
+#ifdef DEV
     PTF_IMPT("\n----------- output Image [");
-    for(int j = 0; j < numberOfImageBytes; j++) {
+    for (int j = 0; j < numberOfImageBytes; j++)
+    {
         PTF_IMPT("%u, ", imageBytes[j]);
     }
     PTF_IMPT("] -------------------\n");
-    #endif
+#endif
 }
 
-void createDiffusionSequenceIkedaMap(double miu, double x, double y, unsigned char mOneSequence[], unsigned char mTwoSequence[], long sequenceLength){
+void createDiffusionSequenceIkedaMap(double miu, double x, double y, unsigned char mOneSequence[], unsigned char mTwoSequence[], long sequenceLength)
+{
     int entriesToSkip = 1000;
     double multiply = pow(10.0, 16);
     double absX, absY, tn, cosT, sinT;
@@ -289,8 +312,9 @@ void createDiffusionSequenceIkedaMap(double miu, double x, double y, unsigned ch
     PTF("--------- Creating Diffusion Sequence ---------\n")
 
     // calculate chaotic map sequences
-    for(long i = 0; i < entriesToSkip + sequenceLength; i++) {
-        tn = 0.4 - (6.0 / (1.0 + xn*xn + yn*yn));
+    for (long i = 0; i < entriesToSkip + sequenceLength; i++)
+    {
+        tn = 0.4 - (6.0 / (1.0 + xn * xn + yn * yn));
 
         cosT = cos(tn);
         sinT = sin(tn);
@@ -301,53 +325,58 @@ void createDiffusionSequenceIkedaMap(double miu, double x, double y, unsigned ch
         xn = xn2;
         yn = yn2;
 
-        if(i >= entriesToSkip) {
+        if (i >= entriesToSkip)
+        {
             absX = fabs(xn);
             absY = fabs(yn);
-            mOneSequence[i-entriesToSkip] = ((long long)((absX - ((double)floor(absX))) * multiply)) % 255;
-            mTwoSequence[i-entriesToSkip] = ((long long)((absY - ((double)floor(absY))) * multiply)) % 255;
+            mOneSequence[i - entriesToSkip] = ((long long)((absX - ((double)floor(absX))) * multiply)) % 255;
+            mTwoSequence[i - entriesToSkip] = ((long long)((absY - ((double)floor(absY))) * multiply)) % 255;
         }
     }
 }
 
-double generateControlParametersIkedaMap(double miu, double avgOfImageByteSum, long numberOfImageBytes) {
+double generateControlParametersIkedaMap(double miu, double avgOfImageByteSum, long numberOfImageBytes)
+{
     double r = 0.0;
 
-    if(numberOfImageBytes <= 1000000)
-        r = (miu+0.0)+(1.0-avgOfImageByteSum)/2;
-    else if(numberOfImageBytes > 1000000 && numberOfImageBytes <= 4000000)
-        r = (miu+0.1)+(1.0-avgOfImageByteSum)/2;
-    else if(numberOfImageBytes > 4000000)
-        r = (miu+0.2)+(1.0-avgOfImageByteSum)/2;
+    if (numberOfImageBytes <= 1000000)
+        r = (miu + 0.0) + (1.0 - avgOfImageByteSum) / 2;
+    else if (numberOfImageBytes > 1000000 && numberOfImageBytes <= 4000000)
+        r = (miu + 0.1) + (1.0 - avgOfImageByteSum) / 2;
+    else if (numberOfImageBytes > 4000000)
+        r = (miu + 0.2) + (1.0 - avgOfImageByteSum) / 2;
 
-	return r;
+    return r;
 }
 
-double generateControlParametersLogisticMap(double basicR, double avgOfImageByteSum, long numberOfImageBytes) {
+double generateControlParametersLogisticMap(double basicR, double avgOfImageByteSum, long numberOfImageBytes)
+{
     double r = 0.0;
 
-    if(numberOfImageBytes <= 1000000)
-        r = (basicR+0.0)+(0.4-avgOfImageByteSum);
-    else if(numberOfImageBytes > 1000000 && numberOfImageBytes <= 4000000)
-        r = (basicR+0.1)+(0.4-avgOfImageByteSum);
-    else if(numberOfImageBytes > 4000000)
-        r = (basicR+0.2)+(0.4-avgOfImageByteSum);
+    if (numberOfImageBytes <= 1000000)
+        r = (basicR + 0.0) + (0.4 - avgOfImageByteSum);
+    else if (numberOfImageBytes > 1000000 && numberOfImageBytes <= 4000000)
+        r = (basicR + 0.1) + (0.4 - avgOfImageByteSum);
+    else if (numberOfImageBytes > 4000000)
+        r = (basicR + 0.2) + (0.4 - avgOfImageByteSum);
 
-	return r;
+    return r;
 }
 
-void createPermutationSequence(int permutationSequence[], double r, double x, long sequenceLength) {
-    double *sequenceS = (double*)malloc(sizeof(double)*sequenceLength);
+void createPermutationSequence(int permutationSequence[], double r, double x, long sequenceLength)
+{
+    double *sequenceS = (double *)malloc(sizeof(double) * sequenceLength);
     double xn = x;
 
     clock_t z = clockStart("--- calc sequence s");
 
     // create original chaotic sequence (skip 1st 1000 entries)
     int transientResultsToSkip = 1000;
-    for(long i = 0; i < transientResultsToSkip + sequenceLength; i++) {
+    for (long i = 0; i < transientResultsToSkip + sequenceLength; i++)
+    {
         xn = r * xn * (1 - xn);
-        if(i >= transientResultsToSkip)
-            sequenceS[i-transientResultsToSkip] = xn;
+        if (i >= transientResultsToSkip)
+            sequenceS[i - transientResultsToSkip] = xn;
     }
 
     clockStopAndWrite("--- done calc sequence s", z);
@@ -361,7 +390,7 @@ void createPermutationSequence(int permutationSequence[], double r, double x, lo
 
     z = clockStart("--- sort sequence s");
 
-    quickSort(&sequenceS[0], sequenceLength);
+    quickSort(sequenceS, sequenceLength);
 
     clockStopAndWrite("--- done sort sequence s", z);
     /*
@@ -373,58 +402,66 @@ void createPermutationSequence(int permutationSequence[], double r, double x, lo
 
     // better allocation (use malloc)
     int numberOfGroups = 10;
-    double **groupedArrays = (double**)malloc(sizeof(double*)*numberOfGroups);
-    int groupArrayLengths = (int)sequenceLength;
-    int *lastGroupedArrayPosition = (int*)malloc(sizeof(int)*numberOfGroups);
+    double **groupedArrays = (double **)malloc(sizeof(double *) * numberOfGroups);
+    int groupArrayLengths = (int)round(sequenceLength / 10);
+    int *lastGroupedArrayPosition = (int *)malloc(sizeof(int) * numberOfGroups);
+    int groupArraySizes[numberOfGroups];
+
+    for (int i = 0; i < numberOfGroups; i++)
+    {
+        groupArraySizes[i] = groupArrayLengths;
+    }
 
     // initialize arrays
     int j;
-    for(int i = 0; i < numberOfGroups; i++) {
+    for (int i = 0; i < numberOfGroups; i++)
+    {
         lastGroupedArrayPosition[i] = 0;
-        groupedArrays[i] = (double*)malloc(sizeof(double)*groupArrayLengths);
-
-        for(j = 0; j < sequenceLength; j++) {
-            groupedArrays[i][j] = -1;
-        }
+        groupedArrays[i] = (double *)malloc(sizeof(double) * groupArrayLengths);
     }
 
     // create grouped arrays based on sequence s
     double tmpTimes;
     int groupNumber, tmpResult1, tmpResult2;
 
-    for(long i = 0; i < sequenceLength; i++) {
-
-        tmpTimes = sequenceS[i]*1000000;
+    for (long i = 0; i < sequenceLength; i++)
+    {
+        tmpTimes = sequenceS[i] * 1000000;
         // get group number
         tmpResult1 = (((int)floor(tmpTimes)) % 10);
         tmpResult2 = (((int)floor(tmpTimes * 1000)) % 10);
 
-
-        // TODO strange check and insert ABS
-        if(tmpResult1 >= tmpResult2)
-            groupNumber = tmpResult1-tmpResult2;
-        else if(tmpResult2 >= tmpResult1)
-            groupNumber = tmpResult2-tmpResult1;
+        groupNumber = abs(tmpResult1 - tmpResult2);
 
         // TODO throw error instead of failing silently
-        if(groupNumber < 0 || groupNumber > 9)
+        if (groupNumber < 0 || groupNumber > 9)
             return;
 
-        // set value into appropriate group array => postfix increment should be correct here
-        groupedArrays[groupNumber][lastGroupedArrayPosition[groupNumber]++] = sequenceS[i];
-    }
+        // need to realloc group
+        if (lastGroupedArrayPosition[groupNumber] >= groupArraySizes[groupNumber])
+        {
+            long newSize = (groupArraySizes[groupNumber] + 1000);
+            groupedArrays[groupNumber] = realloc(groupedArrays[groupNumber], sizeof(double) * newSize);
 
+            groupArraySizes[groupNumber] = newSize;
+        }
+        // set value into appropriate group array
+        groupedArrays[groupNumber][lastGroupedArrayPosition[groupNumber]] = sequenceS[i];
+        lastGroupedArrayPosition[groupNumber]++;
+    }
     long permutationIndex = 0;
 
     clock_t groupS = clockStart("--- start find");
 
-    for(int i = 0; i < numberOfGroups; i++) {
-        if(permutationIndex >= sequenceLength)
+    for (int i = 0; i < numberOfGroups; i++)
+    {
+        if (permutationIndex >= sequenceLength)
             break;
 
         j = 0;
-        // TODO shouldn't it be >= here????
-        while(groupedArrays[i][j] > 0) {
+
+        while (j < lastGroupedArrayPosition[i])
+        {
             permutationSequence[permutationIndex++] = find(sequenceS, groupedArrays[i][j], sequenceLength);
             j++;
         }
@@ -434,7 +471,8 @@ void createPermutationSequence(int permutationSequence[], double r, double x, lo
 
     clockStopAndWrite("--- done group sequence s", z);
 
-    for(int i = 0; i < numberOfGroups; i++){
+    for (int i = 0; i < numberOfGroups; i++)
+    {
         free(groupedArrays[i]);
     }
     free(groupedArrays);
@@ -442,69 +480,81 @@ void createPermutationSequence(int permutationSequence[], double r, double x, lo
     free(sequenceS);
 }
 
-void printSequence(double a[], long n) {
-    #ifdef DEV
-    for(int i = 0; i < n; i++) {
+void printSequence(double a[], long n)
+{
+#ifdef DEV
+    for (int i = 0; i < n; i++)
+    {
         PTF("%d - %.15f\n", i, a[i]);
     }
     PTF("-------------------\n");
-    #endif
+#endif
 }
 
-void sort(double array[], long n){
+void sort(double array[], long n)
+{
     long c, d;
     double t;
 
-    for (c = 1 ; c <= n - 1; c++) {
+    for (c = 1; c <= n - 1; c++)
+    {
         d = c;
 
-        while ( d > 0 && array[d] < array[d-1]) {
-          t          = array[d];
-          array[d]   = array[d-1];
-          array[d-1] = t;
+        while (d > 0 && array[d] < array[d - 1])
+        {
+            t = array[d];
+            array[d] = array[d - 1];
+            array[d - 1] = t;
 
-          d--;
+            d--;
         }
     }
 }
 
 // binary search
-int find(double array[], double data, long length) {
-   int lowerBound = 0;
-   int upperBound = length -1;
-   int midPoint = -1;
-   int comparisons = 0;
-   int index = -1;
+int find(double array[], double data, long length)
+{
+    int lowerBound = 0;
+    int upperBound = length - 1;
+    int midPoint = -1;
+    int comparisons = 0;
+    int index = -1;
 
-   while(lowerBound <= upperBound) {
-      //PTF("Comparison %d\n" , (comparisons +1) );
-      //PTF("lowerBound : %d, array[%d] = %.15f\n",lowerBound,lowerBound,
-      //   array[lowerBound]);
-      //PTF("upperBound : %d, array[%d] = %.15f\n",upperBound,upperBound,
-      //   array[upperBound]);
-      comparisons++;
+    while (lowerBound <= upperBound)
+    {
+        //PTF("Comparison %d\n" , (comparisons +1) );
+        //PTF("lowerBound : %d, array[%d] = %.15f\n",lowerBound,lowerBound,
+        //   array[lowerBound]);
+        //PTF("upperBound : %d, array[%d] = %.15f\n",upperBound,upperBound,
+        //   array[upperBound]);
+        comparisons++;
 
-      // compute the mid point
-      // midPoint = (lowerBound + upperBound) / 2;
-      midPoint = lowerBound + (upperBound - lowerBound) / 2;
+        // compute the mid point
+        // midPoint = (lowerBound + upperBound) / 2;
+        midPoint = lowerBound + (upperBound - lowerBound) / 2;
 
-      // data found
-      if(array[midPoint] == data) {
-         index = midPoint;
-         break;
-      } else {
-         // if data is larger
-         if(array[midPoint] < data) {
-            // data is in upper half
-            lowerBound = midPoint + 1;
-         }
-         // data is smaller
-         else {
-            // data is in lower half
-            upperBound = midPoint -1;
-         }
-      }
-   }
-   //PTF("Total comparisons made: %d" , comparisons);
-   return index;
+        // data found
+        if (array[midPoint] == data)
+        {
+            index = midPoint;
+            break;
+        }
+        else
+        {
+            // if data is larger
+            if (array[midPoint] < data)
+            {
+                // data is in upper half
+                lowerBound = midPoint + 1;
+            }
+            // data is smaller
+            else
+            {
+                // data is in lower half
+                upperBound = midPoint - 1;
+            }
+        }
+    }
+    //PTF("Total comparisons made: %d" , comparisons);
+    return index;
 }

@@ -75,8 +75,8 @@ void decrypt(AlgorithmParameter *params, unsigned char *imageBytes, int numberOf
     for (int l = 0; l < numberOfImageBytes; l++)
     {
         // start at key pos 0 again after reaching end of key
-        char nextKeyPos = (l + 1) % KEY_SIZE;
-        int numberOfLogisticMapRepititions = ((int)key[nextKeyPos]) + lastEncryptedByte;
+        int nextKeyPos = (l + 1) % KEY_SIZE;
+        int numberOfLogisticMapRepititions = key[nextKeyPos] + lastEncryptedByte;
 
         double xi = M1(lastXi + lastEncryptedByte + key[l % KEY_SIZE]);
         double logisticSum = 0.0;
