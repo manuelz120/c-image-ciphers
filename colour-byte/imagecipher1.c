@@ -240,13 +240,13 @@ void runAlgorithm(int mode, unsigned char *imageBytes, long numberOfImageBytes, 
         {
             for (k = 0; k < 4; k++)
             {
-                //PTF("\n----------- round %d after permutation %ld [", i, k);
+                PTF("\n----------- round %d after permutation %ld [", i, k);
                 for (j = 0; j < numberOfImageBytes; j++)
                 {
                     tmpImageBytes[j] = imageBytes[permutationSequenceLogisticMap[k][j]] ^ diffustionSequenceIkedaMap[k][j];
-                    //PTF("%u, ", imageBytes[j]);
+                    PTF("%u, ", imageBytes[j]);
                 }
-                //PTF("] \n");
+                PTF("] \n");
 
                 memcpy(imageBytes, tmpImageBytes, numberOfImageBytes * sizeof(unsigned char));
             }
@@ -265,13 +265,13 @@ void runAlgorithm(int mode, unsigned char *imageBytes, long numberOfImageBytes, 
 
             for (k = 3; k >= 0; k--)
             {
-                //PTF("\n----------- round %d after diffustion %ld [", i, k);
+                PTF("\n----------- round %d after diffustion %ld [", i, k);
                 for (j = 0; j < numberOfImageBytes; j++)
                 {
                     tmpImageBytes[/*j*/ permutationSequenceLogisticMap[k][j]] = imageBytes[j] ^ diffustionSequenceIkedaMap[k][j];
-                    //PTF("%u, ", tmpImageBytes[j]);
+                    PTF("%u, ", tmpImageBytes[j]);
                 }
-                //PTF("] \n");
+                PTF("] \n");
 
                 memcpy(imageBytes, tmpImageBytes, numberOfImageBytes * sizeof(unsigned char));
             }

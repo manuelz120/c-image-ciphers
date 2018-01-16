@@ -1,0 +1,942 @@
+desc: (none)
+cmd: ./main generatedimages/Lenna.pngbytes.txt 1 512 512 3
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=191414
+mem_heap_B=792104
+mem_heap_extra_B=40
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=1112929792
+mem_heap_B=792104
+mem_heap_extra_B=40
+mem_stacks_B=0
+heap_tree=detailed
+n2: 792104 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n0: 786432 0x10AFA5: main (main.c:68)
+ n0: 5672 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=3
+#-----------
+time=1112929943
+mem_heap_B=787456
+mem_heap_extra_B=16
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=1620067158
+mem_heap_B=787488
+mem_heap_extra_B=24
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=1620094394
+mem_heap_B=22807616
+mem_heap_extra_B=4136
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=2019264021
+mem_heap_B=22807696
+mem_heap_extra_B=4144
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=2019264692
+mem_heap_B=29099176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=2069526049
+mem_heap_B=29107176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=2070180691
+mem_heap_B=29115176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=2070793818
+mem_heap_B=29123176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=2071437075
+mem_heap_B=29131176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=2072076652
+mem_heap_B=29139176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=detailed
+n7: 29139176 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 12582912 0x1094C2: runAlgorithm (imagecipher1.c:154)
+  n0: 12582912 0x10B28D: main (main.c:189)
+ n1: 6291456 0x10A380: createPermutationSequence (imagecipher1.c:368)
+  n1: 6291456 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 6291456 0x10B28D: main (main.c:189)
+ n1: 5662296 0x10A61B: createPermutationSequence (imagecipher1.c:420)
+  n1: 5662296 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 5662296 0x10B28D: main (main.c:189)
+ n1: 3145728 0x1094F0: runAlgorithm (imagecipher1.c:155)
+  n0: 3145728 0x10B28D: main (main.c:189)
+ n0: 786432 0x10AFA5: main (main.c:68)
+ n1: 669144 0x10A7DA: createPermutationSequence (imagecipher1.c:444)
+  n1: 669144 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 669144 0x10B28D: main (main.c:189)
+ n0: 1208 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=13
+#-----------
+time=2072701049
+mem_heap_B=29147176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=2073362246
+mem_heap_B=29155176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=2074607590
+mem_heap_B=29171176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=2075266487
+mem_heap_B=29179176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=2075915034
+mem_heap_B=29187176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=2077163952
+mem_heap_B=29219176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=detailed
+n7: 29219176 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 12582912 0x1094C2: runAlgorithm (imagecipher1.c:154)
+  n0: 12582912 0x10B28D: main (main.c:189)
+ n1: 6291456 0x10A380: createPermutationSequence (imagecipher1.c:368)
+  n1: 6291456 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 6291456 0x10B28D: main (main.c:189)
+ n1: 5033152 0x10A61B: createPermutationSequence (imagecipher1.c:420)
+  n1: 5033152 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 5033152 0x10B28D: main (main.c:189)
+ n1: 3145728 0x1094F0: runAlgorithm (imagecipher1.c:155)
+  n0: 3145728 0x10B28D: main (main.c:189)
+ n1: 1378288 0x10A7DA: createPermutationSequence (imagecipher1.c:444)
+  n1: 1378288 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 1378288 0x10B28D: main (main.c:189)
+ n0: 786432 0x10AFA5: main (main.c:68)
+ n0: 1208 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=19
+#-----------
+time=2077800256
+mem_heap_B=29235176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=2078418735
+mem_heap_B=29251176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=2079065389
+mem_heap_B=29267176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=2079703303
+mem_heap_B=29283176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=2080338740
+mem_heap_B=29291176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=2081013684
+mem_heap_B=29307176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=2081651253
+mem_heap_B=29323176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=2082289052
+mem_heap_B=29339176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=2082924551
+mem_heap_B=29355176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=2083778727
+mem_heap_B=29379176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=detailed
+n7: 29379176 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 12582912 0x1094C2: runAlgorithm (imagecipher1.c:154)
+  n0: 12582912 0x10B28D: main (main.c:189)
+ n1: 6291456 0x10A380: createPermutationSequence (imagecipher1.c:368)
+  n1: 6291456 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 6291456 0x10B28D: main (main.c:189)
+ n1: 4404008 0x10A61B: createPermutationSequence (imagecipher1.c:420)
+  n1: 4404008 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 4404008 0x10B28D: main (main.c:189)
+ n1: 3145728 0x1094F0: runAlgorithm (imagecipher1.c:155)
+  n0: 3145728 0x10B28D: main (main.c:189)
+ n1: 2167432 0x10A7DA: createPermutationSequence (imagecipher1.c:444)
+  n1: 2167432 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 2167432 0x10B28D: main (main.c:189)
+ n0: 786432 0x10AFA5: main (main.c:68)
+ n0: 1208 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=29
+#-----------
+time=2084821397
+mem_heap_B=29419176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=2085458453
+mem_heap_B=29443176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=2086109300
+mem_heap_B=29451176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=2086757741
+mem_heap_B=29475176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=2087819501
+mem_heap_B=29515176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=2088658727
+mem_heap_B=29539176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=detailed
+n7: 29539176 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 12582912 0x1094C2: runAlgorithm (imagecipher1.c:154)
+  n0: 12582912 0x10B28D: main (main.c:189)
+ n1: 6291456 0x10A380: createPermutationSequence (imagecipher1.c:368)
+  n1: 6291456 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 6291456 0x10B28D: main (main.c:189)
+ n1: 4404008 0x10A61B: createPermutationSequence (imagecipher1.c:420)
+  n1: 4404008 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 4404008 0x10B28D: main (main.c:189)
+ n1: 3145728 0x1094F0: runAlgorithm (imagecipher1.c:155)
+  n0: 3145728 0x10B28D: main (main.c:189)
+ n1: 2327432 0x10A7DA: createPermutationSequence (imagecipher1.c:444)
+  n1: 2327432 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 2327432 0x10B28D: main (main.c:189)
+ n0: 786432 0x10AFA5: main (main.c:68)
+ n0: 1208 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=35
+#-----------
+time=2089692887
+mem_heap_B=29579176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=2090600945
+mem_heap_B=29611176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=2091258241
+mem_heap_B=29635176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=2092507849
+mem_heap_B=29667176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=2093209880
+mem_heap_B=29691176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=2094296825
+mem_heap_B=29731176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=2094988276
+mem_heap_B=29755176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=2095767534
+mem_heap_B=29787176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=2096438232
+mem_heap_B=29819176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=2097550937
+mem_heap_B=29859176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=detailed
+n7: 29859176 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 12582912 0x1094C2: runAlgorithm (imagecipher1.c:154)
+  n0: 12582912 0x10B28D: main (main.c:189)
+ n1: 6291456 0x10A380: createPermutationSequence (imagecipher1.c:368)
+  n1: 6291456 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 6291456 0x10B28D: main (main.c:189)
+ n1: 3774864 0x10A61B: createPermutationSequence (imagecipher1.c:420)
+  n1: 3774864 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 3774864 0x10B28D: main (main.c:189)
+ n1: 3276576 0x10A7DA: createPermutationSequence (imagecipher1.c:444)
+  n1: 3276576 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 3276576 0x10B28D: main (main.c:189)
+ n1: 3145728 0x1094F0: runAlgorithm (imagecipher1.c:155)
+  n0: 3145728 0x10B28D: main (main.c:189)
+ n0: 786432 0x10AFA5: main (main.c:68)
+ n0: 1208 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=45
+#-----------
+time=2098263150
+mem_heap_B=29891176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=2099246427
+mem_heap_B=29939176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=detailed
+n7: 29939176 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 12582912 0x1094C2: runAlgorithm (imagecipher1.c:154)
+  n0: 12582912 0x10B28D: main (main.c:189)
+ n1: 6291456 0x10A380: createPermutationSequence (imagecipher1.c:368)
+  n1: 6291456 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 6291456 0x10B28D: main (main.c:189)
+ n1: 3774864 0x10A61B: createPermutationSequence (imagecipher1.c:420)
+  n1: 3774864 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 3774864 0x10B28D: main (main.c:189)
+ n1: 3356576 0x10A7DA: createPermutationSequence (imagecipher1.c:444)
+  n1: 3356576 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 3356576 0x10B28D: main (main.c:189)
+ n1: 3145728 0x1094F0: runAlgorithm (imagecipher1.c:155)
+  n0: 3145728 0x10B28D: main (main.c:189)
+ n0: 786432 0x10AFA5: main (main.c:68)
+ n0: 1208 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=47
+#-----------
+time=2100073640
+mem_heap_B=29971176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=2101115107
+mem_heap_B=30019176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=detailed
+n7: 30019176 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 12582912 0x1094C2: runAlgorithm (imagecipher1.c:154)
+  n0: 12582912 0x10B28D: main (main.c:189)
+ n1: 6291456 0x10A380: createPermutationSequence (imagecipher1.c:368)
+  n1: 6291456 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 6291456 0x10B28D: main (main.c:189)
+ n1: 3774864 0x10A61B: createPermutationSequence (imagecipher1.c:420)
+  n1: 3774864 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 3774864 0x10B28D: main (main.c:189)
+ n1: 3436576 0x10A7DA: createPermutationSequence (imagecipher1.c:444)
+  n1: 3436576 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 3436576 0x10B28D: main (main.c:189)
+ n1: 3145728 0x1094F0: runAlgorithm (imagecipher1.c:155)
+  n0: 3145728 0x10B28D: main (main.c:189)
+ n0: 786432 0x10AFA5: main (main.c:68)
+ n0: 1208 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=49
+#-----------
+time=2101849745
+mem_heap_B=30051176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=2102319352
+mem_heap_B=30059176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=2102431769
+mem_heap_B=30067176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=2102563046
+mem_heap_B=30075176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=2102685698
+mem_heap_B=30083176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=2102948650
+mem_heap_B=30091176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=2103231727
+mem_heap_B=30099176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=detailed
+n7: 30099176 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 12582912 0x1094C2: runAlgorithm (imagecipher1.c:154)
+  n0: 12582912 0x10B28D: main (main.c:189)
+ n1: 6291456 0x10A380: createPermutationSequence (imagecipher1.c:368)
+  n1: 6291456 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 6291456 0x10B28D: main (main.c:189)
+ n1: 3774864 0x10A61B: createPermutationSequence (imagecipher1.c:420)
+  n1: 3774864 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 3774864 0x10B28D: main (main.c:189)
+ n1: 3516576 0x10A7DA: createPermutationSequence (imagecipher1.c:444)
+  n1: 3516576 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 3516576 0x10B28D: main (main.c:189)
+ n1: 3145728 0x1094F0: runAlgorithm (imagecipher1.c:155)
+  n0: 3145728 0x10B28D: main (main.c:189)
+ n0: 786432 0x10AFA5: main (main.c:68)
+ n0: 1208 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=56
+#-----------
+time=2103281009
+mem_heap_B=30107176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=2103604106
+mem_heap_B=30115176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=2103685818
+mem_heap_B=30123176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=2103970045
+mem_heap_B=30131176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=2104037152
+mem_heap_B=30139176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=2104250999
+mem_heap_B=30147176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=2104672996
+mem_heap_B=30155176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=2104673288
+mem_heap_B=30163176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=2104863905
+mem_heap_B=30171176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=2104865692
+mem_heap_B=30179176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=detailed
+n7: 30179176 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 12582912 0x1094C2: runAlgorithm (imagecipher1.c:154)
+  n0: 12582912 0x10B28D: main (main.c:189)
+ n1: 6291456 0x10A380: createPermutationSequence (imagecipher1.c:368)
+  n1: 6291456 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 6291456 0x10B28D: main (main.c:189)
+ n1: 3774864 0x10A61B: createPermutationSequence (imagecipher1.c:420)
+  n1: 3774864 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 3774864 0x10B28D: main (main.c:189)
+ n1: 3596576 0x10A7DA: createPermutationSequence (imagecipher1.c:444)
+  n1: 3596576 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 3596576 0x10B28D: main (main.c:189)
+ n1: 3145728 0x1094F0: runAlgorithm (imagecipher1.c:155)
+  n0: 3145728 0x10B28D: main (main.c:189)
+ n0: 786432 0x10AFA5: main (main.c:68)
+ n0: 1208 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=66
+#-----------
+time=2105376929
+mem_heap_B=30187176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=2105509816
+mem_heap_B=30195176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=2105670533
+mem_heap_B=30203176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=2105702795
+mem_heap_B=30211176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=70
+#-----------
+time=2106078102
+mem_heap_B=30219176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=71
+#-----------
+time=2106149579
+mem_heap_B=30227176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=72
+#-----------
+time=2106504071
+mem_heap_B=30235176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=73
+#-----------
+time=2106623618
+mem_heap_B=30243176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=74
+#-----------
+time=2106785025
+mem_heap_B=30251176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=75
+#-----------
+time=2106792447
+mem_heap_B=30259176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=detailed
+n7: 30259176 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 12582912 0x1094C2: runAlgorithm (imagecipher1.c:154)
+  n0: 12582912 0x10B28D: main (main.c:189)
+ n1: 6291456 0x10A380: createPermutationSequence (imagecipher1.c:368)
+  n1: 6291456 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 6291456 0x10B28D: main (main.c:189)
+ n1: 3774864 0x10A61B: createPermutationSequence (imagecipher1.c:420)
+  n1: 3774864 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 3774864 0x10B28D: main (main.c:189)
+ n1: 3676576 0x10A7DA: createPermutationSequence (imagecipher1.c:444)
+  n1: 3676576 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 3676576 0x10B28D: main (main.c:189)
+ n1: 3145728 0x1094F0: runAlgorithm (imagecipher1.c:155)
+  n0: 3145728 0x10B28D: main (main.c:189)
+ n0: 786432 0x10AFA5: main (main.c:68)
+ n0: 1208 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=76
+#-----------
+time=2107331054
+mem_heap_B=30267176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=77
+#-----------
+time=2107438756
+mem_heap_B=30275176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=78
+#-----------
+time=2107515868
+mem_heap_B=30283176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=79
+#-----------
+time=2107552500
+mem_heap_B=30291176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=80
+#-----------
+time=2108070292
+mem_heap_B=30299176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=81
+#-----------
+time=2108118309
+mem_heap_B=30307176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=82
+#-----------
+time=2108247401
+mem_heap_B=30315176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=83
+#-----------
+time=2108495863
+mem_heap_B=30323176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=84
+#-----------
+time=2108735930
+mem_heap_B=30331176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=85
+#-----------
+time=2108938852
+mem_heap_B=30339176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=detailed
+n7: 30339176 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 12582912 0x1094C2: runAlgorithm (imagecipher1.c:154)
+  n0: 12582912 0x10B28D: main (main.c:189)
+ n1: 6291456 0x10A380: createPermutationSequence (imagecipher1.c:368)
+  n1: 6291456 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 6291456 0x10B28D: main (main.c:189)
+ n1: 3774864 0x10A61B: createPermutationSequence (imagecipher1.c:420)
+  n1: 3774864 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 3774864 0x10B28D: main (main.c:189)
+ n1: 3756576 0x10A7DA: createPermutationSequence (imagecipher1.c:444)
+  n1: 3756576 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 3756576 0x10B28D: main (main.c:189)
+ n1: 3145728 0x1094F0: runAlgorithm (imagecipher1.c:155)
+  n0: 3145728 0x10B28D: main (main.c:189)
+ n0: 786432 0x10AFA5: main (main.c:68)
+ n0: 1208 in 6 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=86
+#-----------
+time=2108960419
+mem_heap_B=30347176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=87
+#-----------
+time=2109355736
+mem_heap_B=30355176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=88
+#-----------
+time=2109461368
+mem_heap_B=30363176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=89
+#-----------
+time=2109652215
+mem_heap_B=30371176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=90
+#-----------
+time=2109686317
+mem_heap_B=30379176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=91
+#-----------
+time=2109699949
+mem_heap_B=30387176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=92
+#-----------
+time=2670941668
+mem_heap_B=30387176
+mem_heap_extra_B=4320
+mem_stacks_B=0
+heap_tree=peak
+n7: 30387176 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 12582912 0x1094C2: runAlgorithm (imagecipher1.c:154)
+  n0: 12582912 0x10B28D: main (main.c:189)
+ n1: 6291456 0x10A380: createPermutationSequence (imagecipher1.c:368)
+  n1: 6291456 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 6291456 0x10B28D: main (main.c:189)
+ n1: 5062864 0x10A7DA: createPermutationSequence (imagecipher1.c:444)
+  n1: 5062864 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 5062864 0x10B28D: main (main.c:189)
+ n1: 3145728 0x1094F0: runAlgorithm (imagecipher1.c:155)
+  n0: 3145728 0x10B28D: main (main.c:189)
+ n1: 2516576 0x10A61B: createPermutationSequence (imagecipher1.c:420)
+  n1: 2516576 0x1096FF: runAlgorithm (imagecipher1.c:179)
+   n0: 2516576 0x10B28D: main (main.c:189)
+ n0: 786432 0x10AFA5: main (main.c:68)
+ n0: 1208 in 6 places, all below massif's threshold (1.00%)
