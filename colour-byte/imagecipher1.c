@@ -180,7 +180,7 @@ void runAlgorithm(int mode, unsigned char *imageBytes, long numberOfImageBytes, 
 
 #ifdef DEV
         PTF("\nPermutation Sequence %d: \n [", i);
-        for (int j = 0; j < 18; j++)
+        for (int j = 0; j < numberOfImageBytes; j++)
         {
             PTF("%d ", permutationSequenceLogisticMap[i][j]);
         }
@@ -207,24 +207,23 @@ void runAlgorithm(int mode, unsigned char *imageBytes, long numberOfImageBytes, 
     PTF("\n-------------Diffustion Sequences \n");
     for (int i = 0; i < 2; i++)
     {
-        createDiffusionSequenceIkedaMap(diffuSetups[i].miu, diffuSetups[i].x, diffuSetups[i].y, diffustionSequenceIkedaMap[i * 2], diffustionSequenceIkedaMap[(i * 2) + 1], numberOfImageBytes);
+        createDiffusionSequenceIkedaMap(diffuSetups[i].miu, diffuSetups[i].x, diffuSetups[i].y,
+                                        diffustionSequenceIkedaMap[i * 2], diffustionSequenceIkedaMap[(i * 2) + 1],
+                                        numberOfImageBytes);
+    }
 
 #ifdef DEV
-        PTF("\nDiffusion Sequence %d: \n [ ", i * 2);
-        for (int j = 0; j < 18; j++)
-        {
-            PTF("%d ", diffustionSequenceIkedaMap[i * 2][j]);
-        }
-        PTF(" ]-------------------\n");
 
-        PTF("\nDiffusion Sequence %d: \n [ ", (i * 2) + 1);
-        for (int j = 0; j < 18; j++)
+    for (int i = 0; i < 4; i++)
+    {
+        PTF("\nDiffusion Sequence %d: \n [ ", i);
+        for (int j = 0; j < numberOfImageBytes; j++)
         {
-            PTF("%d ", diffustionSequenceIkedaMap[(i * 2) + 1][j]);
+            PTF("%d ", diffustionSequenceIkedaMap[i][j]);
         }
         PTF(" ]-------------------\n");
-#endif
     }
+#endif
 
     clockStopAndWrite("done diffusion", s);
 
@@ -268,7 +267,7 @@ void runAlgorithm(int mode, unsigned char *imageBytes, long numberOfImageBytes, 
                 PTF("\n----------- round %d after diffustion %ld [", i, k);
                 for (j = 0; j < numberOfImageBytes; j++)
                 {
-                    tmpImageBytes[/*j*/ permutationSequenceLogisticMap[k][j]] = imageBytes[j] ^ diffustionSequenceIkedaMap[k][j];
+                    tmpImageBytes[permutationSequenceLogisticMap[k][j]] = imageBytes[j] ^ diffustionSequenceIkedaMap[k][j];
                     PTF("%u, ", tmpImageBytes[j]);
                 }
                 PTF("] \n");
@@ -310,6 +309,9 @@ void createDiffusionSequenceIkedaMap(double miu, double x, double y, unsigned ch
     double yn = y, yn2;
 
     PTF("--------- Creating Diffusion Sequence ---------\n")
+    printf("miu = %f\n", miu);
+    printf("x = %f\n", x);
+    printf("y = %f\n", y);
 
     // calculate chaotic map sequences
     for (long i = 0; i < entriesToSkip + sequenceLength; i++)
@@ -380,23 +382,6 @@ void createPermutationSequence(int permutationSequence[], double r, double x, lo
     }
 
     clockStopAndWrite("--- done calc sequence s", z);
-    /*
-    PTF("original sequence C\n");
-    printSequence(sequenceC, 10);
-    */
-
-    // create sorted sequence S based on sequence C
-    //memcpy(sequenceS, sequenceC, sequenceLength * sizeof(double));
-
-    z = clockStart("--- sort sequence s");
-
-    quickSort(sequenceS, sequenceLength);
-
-    clockStopAndWrite("--- done sort sequence s", z);
-    /*
-    PTF("sorted sequence S\n");
-    printSequence(sequenceS, 10);
-    */
 
     z = clockStart("--- group sequence s");
 
@@ -451,6 +436,12 @@ void createPermutationSequence(int permutationSequence[], double r, double x, lo
     }
     long permutationIndex = 0;
 
+    z = clockStart("--- sort sequence s");
+
+    quickSort(sequenceS, sequenceLength);
+
+    clockStopAndWrite("--- done sort sequence s", z);
+
     clock_t groupS = clockStart("--- start find");
 
     for (int i = 0; i < numberOfGroups; i++)
@@ -460,9 +451,21 @@ void createPermutationSequence(int permutationSequence[], double r, double x, lo
 
         j = 0;
 
-        while (j < lastGroupedArrayPosition[i])
+        while (j <= lastGroupedArrayPosition[i])
         {
-            permutationSequence[permutationIndex++] = find(sequenceS, groupedArrays[i][j], sequenceLength);
+            /*int index = find(sequenceS, groupedArrays[i][j], sequenceLength);
+            permutationSequence[permutationIndex++] = index;
+            sequenceS[index] = -1;
+            quickSort(sequenceS, sequenceLength);*/
+            for (int k = 0; k < sequenceLength; k++)
+            {
+                if (sequenceS[k] == groupedArrays[i][j])
+                {
+                    permutationSequence[permutationIndex++] = k;
+                    sequenceS[k] = -1;
+                    break;
+                }
+            }
             j++;
         }
     }

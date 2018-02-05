@@ -55,70 +55,70 @@ starting    start create permSeq
 
 starting --- calc sequence s 
 
- --- done calc sequence s 0.000005000000000 seconds
+ --- done calc sequence s 0.000004000000000 seconds
+
+starting --- group sequence s 
 
 starting --- sort sequence s 
 
- --- done sort sequence s 0.000004000000000 seconds
-
-starting --- group sequence s 
+ --- done sort sequence s 0.000003000000000 seconds
 
 starting --- start find 
 
  --- done find 0.000002000000000 seconds
 
- --- done group sequence s 0.000009000000000 seconds
+ --- done group sequence s 0.000006000000000 seconds
 
 Permutation Sequence 0: 
- [2 2 3 7 13 6 8 26 14 14 20 25 25 0 4 4 9 9  ]-------------------
-
-starting --- calc sequence s 
-
- --- done calc sequence s 0.000005000000000 seconds
-
-starting --- sort sequence s 
-
- --- done sort sequence s 0.000001000000000 seconds
-
-starting --- group sequence s 
-
-starting --- start find 
-
- --- done find 0.000002000000000 seconds
-
- --- done group sequence s 0.000005000000000 seconds
-
-Permutation Sequence 1: 
- [2 2 3 6 8 7 13 20 26 14 14 25 25 0 4 4 9 9  ]-------------------
-
-starting --- calc sequence s 
-
- --- done calc sequence s 0.000005000000000 seconds
-
-starting --- sort sequence s 
-
- --- done sort sequence s 0.000001000000000 seconds
-
-starting --- group sequence s 
-
-starting --- start find 
-
- --- done find 0.000001000000000 seconds
-
- --- done group sequence s 0.000004000000000 seconds
-
-Permutation Sequence 2: 
- [2 2 8 3 6 7 13 20 26 14 14 25 25 0 4 4 12 16  ]-------------------
+ [1 2 7 3 13 8 26 6 14 24 20 15 25 4 9 12 0 5 10 16 19 23 18 17 11 21 22  ]-------------------
 
 starting --- calc sequence s 
 
  --- done calc sequence s 0.000004000000000 seconds
 
+starting --- group sequence s 
+
 starting --- sort sequence s 
 
  --- done sort sequence s 0.000001000000000 seconds
 
+starting --- start find 
+
+ --- done find 0.000002000000000 seconds
+
+ --- done group sequence s 0.000004000000000 seconds
+
+Permutation Sequence 1: 
+ [1 2 3 8 6 7 13 26 20 14 24 15 25 4 16 9 12 0 5 17 10 19 23 18 11 21 22  ]-------------------
+
+starting --- calc sequence s 
+
+ --- done calc sequence s 0.000004000000000 seconds
+
 starting --- group sequence s 
+
+starting --- sort sequence s 
+
+ --- done sort sequence s 0.000001000000000 seconds
+
+starting --- start find 
+
+ --- done find 0.000002000000000 seconds
+
+ --- done group sequence s 0.000003000000000 seconds
+
+Permutation Sequence 2: 
+ [1 8 2 3 6 7 13 26 20 14 24 15 25 4 16 12 18 0 5 17 9 19 23 10 11 21 22  ]-------------------
+
+starting --- calc sequence s 
+
+ --- done calc sequence s 0.000004000000000 seconds
+
+starting --- group sequence s 
+
+starting --- sort sequence s 
+
+ --- done sort sequence s 0.000000000000000 seconds
 
 starting --- start find 
 
@@ -127,11 +127,11 @@ starting --- start find
  --- done group sequence s 0.000003000000000 seconds
 
 Permutation Sequence 3: 
- [2 2 3 6 8 7 13 20 26 25 25 0 4 4 12 14 14 16  ]-------------------
+ [1 3 6 2 8 7 13 26 20 24 25 4 14 16 12 18 0 5 15 17 19 23 9 11 10 21 22  ]-------------------
 
-    done permSeq 0.000065000000000 seconds
+    done permSeq 0.000056000000000 seconds
 
- done permutation 0.000070000000000 seconds
+ done permutation 0.000059000000000 seconds
 
 starting start diffusion 
 
@@ -142,48 +142,54 @@ miu1 = 0.971369782480896
 
 -------------Diffustion Sequences 
 --------- Creating Diffusion Sequence ---------
+miu = 0.971370
+x = 0.350000
+y = 0.350000
+--------- Creating Diffusion Sequence ---------
+miu = 0.971370
+x = 0.360000
+y = 0.360000
 
 Diffusion Sequence 0: 
- [ 63 153 115 198 5 152 92 179 147 27 250 43 252 168 22 147 113 59  ]-------------------
+ [ 63 153 115 198 5 152 92 179 147 27 250 43 252 168 22 147 113 59 195 183 15 135 221 251 252 63 253  ]-------------------
 
 Diffusion Sequence 1: 
- [ 146 70 130 185 167 128 169 60 102 19 84 106 24 100 77 235 107 82  ]-------------------
---------- Creating Diffusion Sequence ---------
+ [ 146 70 130 185 167 128 169 60 102 19 84 106 24 100 77 235 107 82 249 128 250 65 126 104 47 47 65  ]-------------------
 
 Diffusion Sequence 2: 
- [ 212 106 127 72 165 96 248 104 122 185 217 31 198 143 115 163 82 250  ]-------------------
+ [ 212 106 127 72 165 96 248 104 122 185 217 31 198 143 115 163 82 250 235 252 99 35 23 177 124 117 53  ]-------------------
 
 Diffusion Sequence 3: 
- [ 1 47 163 164 24 86 23 34 112 235 223 24 9 21 92 111 231 48  ]-------------------
+ [ 1 47 163 164 24 86 23 34 112 235 223 24 9 21 92 111 231 48 69 174 241 195 120 124 65 197 178  ]-------------------
 
- done diffusion 0.000158000000000 seconds
+ done diffusion 0.000164000000000 seconds
 
 starting encryption/decryption 
 
 ----------- round 0 after permutation 0 [255, 255, 255, 0, 0, 0, 11, 255, 255, 255, 165, 9, 2, 191, 255, 173, 216, 230, 255, 255, 4, 255, 105, 180, 255, 105, 180, ] 
 
------------ round 0 after permutation 1 [192, 102, 115, 57, 186, 147, 163, 7, 108, 228, 254, 66, 149, 87, 22, 147, 142, 196, 193, 111, 215, 120, 34, 79, 245, 192, 2, ] 
+----------- round 0 after permutation 1 [192, 102, 140, 198, 186, 103, 232, 184, 108, 228, 254, 134, 149, 168, 233, 145, 142, 59, 102, 111, 240, 51, 34, 29, 245, 192, 148, ] 
 
------------ round 0 after permutation 2 [225, 53, 187, 26, 203, 135, 254, 235, 100, 5, 66, 170, 216, 164, 247, 81, 143, 182, 108, 14, 116, 128, 17, 39, 109, 87, 57, ] 
+----------- round 0 after permutation 2 [244, 202, 68, 213, 79, 56, 1, 168, 150, 250, 161, 251, 216, 222, 195, 15, 254, 146, 158, 187, 4, 46, 99, 14, 169, 28, 99, ] 
 
------------ round 0 after permutation 3 [111, 209, 27, 82, 91, 139, 92, 28, 67, 78, 46, 72, 145, 110, 184, 104, 138, 117, 100, 144, 102, 38, 25, 150, 214, 245, 181, ] 
+----------- round 0 after permutation 3 [30, 252, 59, 157, 164, 200, 38, 11, 126, 122, 112, 16, 218, 192, 141, 123, 204, 14, 211, 110, 153, 152, 25, 16, 135, 91, 86, ] 
 
------------ round 1 after permutation 0 [26, 52, 241, 248, 91, 74, 121, 68, 197, 30, 42, 119, 82, 78, 205, 215, 95, 186, 207, 202, 97, 85, 54, 50, 9, 227, 148, ] 
+----------- round 1 after permutation 0 [253, 178, 133, 159, 102, 93, 215, 116, 233, 108, 132, 188, 132, 217, 134, 188, 249, 248, 62, 160, 159, 211, 2, 108, 49, 93, 171, ] 
 
------------ round 1 after permutation 1 [206, 104, 139, 130, 75, 225, 153, 39, 94, 214, 155, 200, 31, 178, 77, 200, 111, 37, 145, 232, 80, 72, 23, 201, 139, 106, 168, ] 
+----------- round 1 after permutation 1 [141, 28, 7, 89, 220, 113, 247, 100, 21, 42, 101, 151, 161, 206, 122, 23, 140, 102, 71, 78, 175, 235, 227, 3, 64, 236, 255, ] 
 
------------ round 1 after permutation 2 [25, 205, 0, 32, 249, 167, 27, 108, 206, 94, 25, 0, 114, 170, 6, 160, 189, 132, 230, 239, 149, 208, 150, 161, 231, 103, 9, ] 
+----------- round 1 after permutation 2 [142, 65, 219, 172, 80, 228, 103, 195, 201, 105, 20, 125, 244, 184, 193, 193, 202, 223, 136, 230, 159, 15, 125, 47, 184, 196, 162, ] 
 
------------ round 1 after permutation 3 [212, 106, 177, 104, 190, 12, 82, 253, 115, 191, 223, 120, 161, 150, 138, 90, 32, 71, 86, 26, 61, 125, 248, 16, 124, 165, 229, ] 
+----------- round 1 after permutation 3 [149, 163, 164, 228, 194, 163, 64, 202, 229, 120, 97, 222, 2, 223, 185, 87, 218, 116, 15, 35, 10, 197, 56, 165, 1, 122, 72, ] 
 
- done enc/dec 0.000046000000000 seconds
+ done enc/dec 0.000024000000000 seconds
 
------------ output Image [176, 158, 203, 246, 107, 171, 129, 31, 149, 78, 122, 204, 183, 171, 253, 229, 109, 16, 101, 248, 235, 211, 199, 195, 57, 184, 207, ] -------------------
+----------- output Image [162, 203, 227, 0, 253, 156, 200, 106, 122, 234, 165, 218, 176, 207, 94, 96, 114, 147, 18, 218, 210, 102, 0, 162, 32, 0, 138, ] -------------------
 
-took total 0.000294000000000 seconds
+took total 0.000265000000000 seconds
 
 ---- Writing : [
-176, 158, 203, 246, 107, 171, 129, 31, 149, 78, 122, 204, 183, 171, 253, 229, 109, 16, 101, 248, 235, 211, 199, 195, 57, 184, 207, ] ----
+162, 203, 227, 0, 253, 156, 200, 106, 122, 234, 165, 218, 176, 207, 94, 96, 114, 147, 18, 218, 210, 102, 0, 162, 32, 0, 138, ] ----
 27
 9
 ./main generatedimages/image-small.pngbytes.txt 1 3 3 3
